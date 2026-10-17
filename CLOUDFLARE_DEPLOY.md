@@ -28,7 +28,7 @@ git commit -m "Configure Cloudflare Pages deployment"
 git push origin main
 ```
 
-### Step 2: Create a Cloudflare Pages Project
+### Step 2: Create a Cloudflare Pages Project\
 1. Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/).
 2. In the left navigation, go to **Workers & Pages** > **Create application** > **Pages** tab.
 3. Click **Connect to Git** and select your GitHub account and the `talking-bobo` repository.
