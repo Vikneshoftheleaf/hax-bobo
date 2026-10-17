@@ -23,7 +23,7 @@ Never read the [event] tag aloud. Always stay under 8 words.`;
 
 export async function onRequestGet(context) {
   const { env } = context;
-  const model = env.LIVE_MODEL || 'gemini-2.5-flash-native-audio-preview-09-2025';
+  const model = env.LIVE_MODEL || 'gemini-3.1-flash-live-preview';
   const voice = env.VOICE || 'Puck';
 
   return new Response(
