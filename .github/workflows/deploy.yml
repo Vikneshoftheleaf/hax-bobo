@@ -31,8 +31,16 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
+        id: cloudflare_deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=talking-bobo
+          command: pages deploy dist --project-name=talking-bobo --branch=${{ github.ref_name }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Print Deployment Status
+        run: |
+          echo "### 🚀 Cloudflare Pages Deployment Successful!" >> $GITHUB_STEP_SUMMARY
+          echo "Your Talking Bobo application has been deployed to Cloudflare Pages." >> $GITHUB_STEP_SUMMARY
