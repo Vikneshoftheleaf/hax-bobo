@@ -1,0 +1,19 @@
+{
+  "name": "talking-bobo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"node server.js\" \"vite\"",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@google/genai": "^1.20.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "tone": "^15.1.22"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "vite": "^5.4.0"
+  }
+}

@@ -1,0 +1,10 @@
+name = "talking-bobo"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+# Optional: To enable permanent guestbook & hit counter persistence across Cloudflare's edge,
+# create a KV namespace in your Cloudflare dashboard and bind it with the variable name BOBO_KV:
+# [[kv_namespaces]]
+# binding = "BOBO_KV"
+# id = "your-kv-namespace-id"
