@@ -8,3 +8,6 @@ pages_build_output_dir = "dist"
 # [[kv_namespaces]]
 # binding = "BOBO_KV"
 # id = "your-kv-namespace-id"
+
+[assets]
+directory = "./dist"
