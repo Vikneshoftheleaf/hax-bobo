@@ -12,12 +12,19 @@ const statusDot = document.querySelector('.status-dot');
 const speechBubble = document.getElementById('speech-bubble');
 const speechText = document.getElementById('speech-text');
 
-// ---- Speech Cloud display ----
+// Responsive Live Caption Box Elements (Below Bobo)
+const captionContainer = document.getElementById('bobo-caption-container');
+const captionText = document.getElementById('bobo-caption-text');
+const captionStatusLabel = document.getElementById('caption-status-label');
+
+// ---- Speech Cloud & Live Transcribe Display ----
 let speechHideTimer;
+let captionSpeakingTimer;
 let accumulatedText = '';
 
-function showSpeech(text, append = false, duration = 3800) {
+function showSpeech(text, append = false, duration = 4000) {
   clearTimeout(speechHideTimer);
+  clearTimeout(captionSpeakingTimer);
   if (append) {
     accumulatedText += text;
   } else {
@@ -25,15 +32,37 @@ function showSpeech(text, append = false, duration = 3800) {
   }
   const clean = accumulatedText.trim();
   speechText.textContent = clean;
+
   if (clean) {
     speechBubble.classList.add('visible');
+    if (captionText) {
+      captionText.textContent = clean;
+    }
+    if (captionContainer) {
+      captionContainer.classList.add('speaking');
+    }
+    if (captionStatusLabel) {
+      captionStatusLabel.textContent = 'Bobo Speaking...';
+    }
+
     speechHideTimer = setTimeout(() => {
       speechBubble.classList.remove('visible');
       accumulatedText = '';
     }, duration);
+
+    captionSpeakingTimer = setTimeout(() => {
+      captionContainer?.classList.remove('speaking');
+      if (captionStatusLabel) {
+        captionStatusLabel.textContent = live.connected ? 'Live & Listening' : "Bobo's Voice Captions";
+      }
+    }, duration);
   } else {
     speechBubble.classList.remove('visible');
     accumulatedText = '';
+    captionContainer?.classList.remove('speaking');
+    if (captionStatusLabel) {
+      captionStatusLabel.textContent = live.connected ? 'Live & Listening' : "Bobo's Voice Captions";
+    }
   }
 }
 
@@ -121,13 +150,24 @@ const live = new Live({
   onLevel: l => { if (live.connected) setMouth(Math.min(1, l * 5)); },
   onStatus: s => {
     statusText.textContent = s;
-    if (s.includes('connecting')) setCallState('connecting');
-    else if (s.includes('live')) setCallState('active');
+    if (s.includes('connecting')) {
+      setCallState('connecting');
+      if (captionStatusLabel) captionStatusLabel.textContent = 'Connecting...';
+    } else if (s.includes('live')) {
+      setCallState('active');
+      if (captionStatusLabel) captionStatusLabel.textContent = 'Live & Listening';
+      if (captionText && (!accumulatedText || captionText.textContent.includes('Tap the phone'))) {
+        captionText.textContent = 'Listening to you... Go ahead and talk! 🎙️';
+      }
+    }
   },
   onMute: isMuted => {
     muteBtn.classList.toggle('muted', isMuted);
     muteBtn.title = isMuted ? 'Unmute Microphone' : 'Mute Microphone';
     statusText.textContent = isMuted ? 'mic muted' : 'live: just talk';
+    if (captionStatusLabel) {
+      captionStatusLabel.textContent = isMuted ? 'Mic Muted' : 'Live & Listening';
+    }
   },
   onText: (chunk, reset) => {
     if (reset) {
@@ -146,6 +186,8 @@ const live = new Live({
   onStop: () => {
     setCallState('idle');
     showSpeech('');
+    if (captionStatusLabel) captionStatusLabel.textContent = "Bobo's Voice Captions";
+    captionContainer?.classList.remove('speaking');
   },
 });
 

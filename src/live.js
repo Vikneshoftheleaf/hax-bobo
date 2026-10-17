@@ -106,6 +106,9 @@ export class Live {
       this.flush(); // user talked over Bobo
       this.h.onText?.('', true);
     }
+    if (s.outputAudioTranscription?.text) {
+      this.h.onText?.(s.outputAudioTranscription.text, false);
+    }
     for (const p of s.modelTurn?.parts ?? []) {
       if (p.inlineData?.data) this.play(p.inlineData.data);
       if (p.text) this.h.onText?.(p.text, false);
