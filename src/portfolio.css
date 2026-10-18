@@ -774,49 +774,18 @@ body {
   order: 3;
 }
 
+/* Cloud bubble hidden — captions are shown in the widget below Bobo */
 .cloud-bubble {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.85);
-  background: #ffffff;
-  border: 3px solid var(--ink);
-  border-radius: 24px;
-  padding: 8px 18px;
-  max-width: min(80vw, 300px);
-  min-height: 40px;
-  box-shadow: var(--card-shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 30;
+  display: none !important;
 }
 .cloud-bubble.visible {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-  pointer-events: auto;
+  display: none !important;
 }
 #speech-text {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #3b2a1e;
-  word-break: break-word;
+  display: none;
 }
 .cloud-tail {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0; height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid #ffffff;
-  filter: drop-shadow(0 2px 0 var(--ink));
+  display: none;
 }
 
 #tom {
@@ -825,6 +794,16 @@ body {
   max-height: 380px;
   touch-action: none;
   cursor: pointer;
+  /* Fix: remove mobile tap highlight (blue selection box on touch) */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+#tom * {
+  /* Prevent any child element from showing tap highlight */
+  -webkit-tap-highlight-color: transparent;
 }
 [data-zone] { cursor: pointer; }
 
@@ -2459,20 +2438,24 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Caption / Transcription Text Body */
 .caption-text-body {
-  padding: 10px 16px 14px;
+  padding: 12px 18px 16px;
   font-family: var(--font-body);
-  font-size: clamp(0.82rem, 2.4vw, 1rem);
+  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
   font-weight: 600;
   color: var(--ink-soft);
-  line-height: 1.55;
+  line-height: 1.6;
   word-break: break-word;
   overflow-wrap: anywhere;
-  min-height: 44px;
+  min-height: 52px;
+  /* Never clip — always expand to fit */
+  max-height: none;
+  overflow: visible;
   transition: color 0.25s ease;
 }
 
 .bobo-live-widget.speaking .caption-text-body {
   color: var(--ink);
+  font-size: clamp(0.95rem, 2.8vw, 1.1rem);
 }
 
 /* Night mode overrides */
@@ -2530,7 +2513,8 @@ input[type="range"]::-webkit-slider-thumb {
   }
 
   .caption-text-body {
-    padding: 8px 12px 12px;
+    padding: 10px 14px 14px;
+    font-size: clamp(0.88rem, 3vw, 1rem);
   }
 }
 

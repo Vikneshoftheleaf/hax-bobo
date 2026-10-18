@@ -15,7 +15,7 @@ export class Live {
     this.muted = false;
     this.next = 0;
     this.srcs = new Set();
-    this.pitch = 7; // Fixed child/cartoon voice default (+7 semitones)
+    this.pitch = 3; // Fixed child/cartoon voice default (+7 semitones)
   }
 
   setPitch(semitones) {
@@ -65,13 +65,14 @@ export class Live {
     this.session = await ai.live.connect({
       model: cfg.model,
       config: {
+        // AUDIO only — keeps the connection stable. Captions come via outputAudioTranscription.
         responseModalities: [Modality.AUDIO],
         outputAudioTranscription: {},
         systemInstruction: cfg.persona,
         speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: cfg.voice } } },
       },
       callbacks: {
-        onopen: () => {},
+        onopen: () => { },
         onmessage: m => this.onMsg(m),
         onerror: e => this.h.onStatus('error: ' + (e.message || 'connection')),
         onclose: () => this.stop(),
@@ -101,18 +102,38 @@ export class Live {
   }
 
   onMsg(m) {
+    // DEV: log raw message so we can see exactly which fields carry text/transcription
+    console.log('[Bobo onMsg]', JSON.stringify(m).slice(0, 400));
+
     const s = m.serverContent; if (!s) return;
+
     if (s.interrupted) {
       this.flush(); // user talked over Bobo
+      this.h.onText?.('', true); // reset caption
+    }
+
+    // turnStart = brand-new model response starting — reset caption
+    if (s.turnStart) {
       this.h.onText?.('', true);
     }
-    if (s.outputAudioTranscription?.text) {
-      this.h.onText?.(s.outputAudioTranscription.text, false);
+
+    // Path 1: outputAudioTranscription — transcription of Bobo's audio output
+    const transcriptText = s.outputAudioTranscription?.text
+      ?? s.outputTranscription?.text
+      ?? s.audioTranscription?.text;
+    if (transcriptText) {
+      this.h.onText?.(transcriptText, false);
     }
+
+    // Path 2: modelTurn parts — text chunks (TEXT modality or inline text)
     for (const p of s.modelTurn?.parts ?? []) {
       if (p.inlineData?.data) this.play(p.inlineData.data);
-      if (p.text) this.h.onText?.(p.text, false);
+      if (p.text && !transcriptText) {
+        // Only use part text if we didn't already get transcription (avoid duplicates)
+        this.h.onText?.(p.text, false);
+      }
     }
+
     if (s.turnComplete) {
       this.h.onTurnComplete?.();
     }
@@ -136,13 +157,13 @@ export class Live {
     this.srcs.add(src);
     src.onended = () => {
       this.srcs.delete(src);
-      try { src.disconnect(); } catch {}
+      try { src.disconnect(); } catch { }
     };
   }
 
   flush() {
     this.srcs.forEach(s => {
-      try { s.stop(); s.disconnect(); } catch {}
+      try { s.stop(); s.disconnect(); } catch { }
     });
     this.srcs.clear();
     this.next = 0;
@@ -169,11 +190,11 @@ export class Live {
     this.muted = false;
     this.h.onMute?.(false);
     this.flush();
-    try { this.pitchShift?.dispose(); } catch {}
+    try { this.pitchShift?.dispose(); } catch { }
     this.pitchShift = null;
     this.stream?.getTracks().forEach(t => t.stop());
     this.inp?.close();
-    try { this.session?.close(); } catch {}
+    try { this.session?.close(); } catch { }
     this.session = null;
     this.h.onStatus('offline: poke him anyway');
     this.h.onLevel(0);

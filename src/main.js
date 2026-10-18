@@ -21,6 +21,7 @@ const captionStatusLabel = document.getElementById('caption-status-label');
 let speechHideTimer;
 let captionSpeakingTimer;
 let accumulatedText = '';
+let turnFresh = true; // true = next text chunk starts a brand-new caption
 
 function showSpeech(text, append = false, duration = 4000) {
   clearTimeout(speechHideTimer);
@@ -156,8 +157,9 @@ const live = new Live({
     } else if (s.includes('live')) {
       setCallState('active');
       if (captionStatusLabel) captionStatusLabel.textContent = 'Live & Listening';
-      if (captionText && (!accumulatedText || captionText.textContent.includes('Tap the phone'))) {
-        captionText.textContent = 'Listening to you... Go ahead and talk! 🎙️';
+      // Show listening prompt — will be replaced as soon as Gemini speaks
+      if (captionText && !accumulatedText) {
+        captionText.textContent = 'Listening... say something! 🎙️';
       }
     }
   },
@@ -171,21 +173,54 @@ const live = new Live({
   },
   onText: (chunk, reset) => {
     if (reset) {
-      showSpeech('');
+      // interrupted or new turn: wipe caption and start fresh
+      accumulatedText = '';
+      turnFresh = true;
+      if (captionText) captionText.textContent = '';
+      captionContainer?.classList.remove('speaking');
     } else {
-      showSpeech(chunk, true, 4200);
+      if (turnFresh) {
+        // First chunk of a new turn — don't append to old text, start clean
+        accumulatedText = chunk;
+        turnFresh = false;
+      } else {
+        accumulatedText += chunk;
+      }
+      const clean = accumulatedText.trim();
+      if (clean && captionText) {
+        captionText.textContent = clean;
+        captionContainer?.classList.add('speaking');
+        if (captionStatusLabel) captionStatusLabel.textContent = 'Bobo Speaking...';
+        // Reset the hide timer
+        clearTimeout(speechHideTimer);
+        clearTimeout(captionSpeakingTimer);
+        speechHideTimer = setTimeout(() => {
+          accumulatedText = '';
+          turnFresh = true;
+        }, 4500);
+        captionSpeakingTimer = setTimeout(() => {
+          captionContainer?.classList.remove('speaking');
+          if (captionStatusLabel) {
+            captionStatusLabel.textContent = live.connected ? 'Live & Listening' : "Bobo's Voice Captions";
+          }
+        }, 4500);
+      }
     }
   },
   onTurnComplete: () => {
+    // Mark next incoming text as a fresh turn
+    turnFresh = true;
+    // Keep the last caption visible for a while, then fade
     clearTimeout(speechHideTimer);
     speechHideTimer = setTimeout(() => {
-      speechBubble.classList.remove('visible');
       accumulatedText = '';
-    }, 3200);
+    }, 3500);
   },
   onStop: () => {
     setCallState('idle');
-    showSpeech('');
+    accumulatedText = '';
+    turnFresh = true;
+    if (captionText) captionText.textContent = 'Tap the phone button to start talking live with Bobo! ✨';
     if (captionStatusLabel) captionStatusLabel.textContent = "Bobo's Voice Captions";
     captionContainer?.classList.remove('speaking');
   },
@@ -194,13 +229,15 @@ const live = new Live({
 // Start / Stop Call icon click
 callBtn.onclick = async () => {
   if (live.connected || callBtn.classList.contains('connecting') || callBtn.classList.contains('active')) {
-    live.stop();
+    live.stop(); // onStop handler updates captionText
     setCallState('idle');
-    showSpeech('');
     return;
   }
   setCallState('connecting');
-  showSpeech('Waking up...');
+  // Show connecting state directly in the widget caption
+  if (captionText) captionText.textContent = 'Waking up... 💤';
+  accumulatedText = '';
+  turnFresh = true;
   try {
     await live.connect();
     setCallState('active');
@@ -209,7 +246,7 @@ callBtn.onclick = async () => {
     live.stop();
     setCallState('idle');
     statusText.textContent = 'could not connect: ' + e.message;
-    showSpeech('Could not connect: ' + e.message, false, 3200);
+    if (captionText) captionText.textContent = '⚠️ Could not connect: ' + e.message;
   }
 };
 
