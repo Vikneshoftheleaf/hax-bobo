@@ -159,7 +159,7 @@ const live = new Live({
       if (captionStatusLabel) captionStatusLabel.textContent = 'Live & Listening';
       // Show listening prompt — will be replaced as soon as Gemini speaks
       if (captionText && !accumulatedText) {
-        captionText.textContent = 'Listening... say something! 🎙️';
+        captionText.textContent = 'Listening... say something!';
       }
     }
   },
@@ -220,7 +220,7 @@ const live = new Live({
     setCallState('idle');
     accumulatedText = '';
     turnFresh = true;
-    if (captionText) captionText.textContent = 'Tap the phone button to start talking live with Bobo! ✨';
+    if (captionText) captionText.textContent = 'Tap the phone button to start talking live with Bobo.';
     if (captionStatusLabel) captionStatusLabel.textContent = "Bobo's Voice Captions";
     captionContainer?.classList.remove('speaking');
   },
@@ -235,7 +235,7 @@ callBtn.onclick = async () => {
   }
   setCallState('connecting');
   // Show connecting state directly in the widget caption
-  if (captionText) captionText.textContent = 'Waking up... 💤';
+  if (captionText) captionText.textContent = 'Waking up...';
   accumulatedText = '';
   turnFresh = true;
   try {
@@ -246,7 +246,7 @@ callBtn.onclick = async () => {
     live.stop();
     setCallState('idle');
     statusText.textContent = 'could not connect: ' + e.message;
-    if (captionText) captionText.textContent = '⚠️ Could not connect: ' + e.message;
+    if (captionText) captionText.textContent = 'Could not connect: ' + e.message;
   }
 };
 

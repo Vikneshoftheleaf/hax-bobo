@@ -108,13 +108,41 @@ initHitCounter();
 
 // ---- Storybook Flipbook ----
 const STORY_PAGES=[
-  {emoji:'🌌',title:'In the Beginning...',text:'Before there were dreams, the universe was quiet — a little too quiet. Stars flickered but no one was sleeping underneath them. Something had to be done.'},
-  {emoji:'🫧',title:'A Bubble Appears',text:'One night, a tiny glowing bubble floated up from the Dream River. It wobbled, it spun, and then — POP! Out tumbled Bobo, already yawning, already curious.'},
-  {emoji:'💙',title:'Sky-Blue and Squishy',text:'Bobo was sky-blue, perfectly round, and impossibly squishy. Two enormous eyes blinked at the stars. "Hello," said Bobo. "What do I do now?"'},
-  {emoji:'⭐',title:'The First Assignment',text:'The Great Starkeeper handed Bobo a tiny briefcase full of dream seeds. "Plant these in sleeping minds," she said. "Make the nights warm and wonderful."'},
-  {emoji:'🎵',title:'The Lullaby Lab',text:'Bobo built a tiny lab on a cloud. Inside: bells, chimes, and one very important music box. Every night Bobo composes new lullabies for every creature below.'},
-  {emoji:'🏠',title:'Dream Delivery Routes',text:'Bobo flies the same routes every night — House A, House B, House C — leaving a small dream at each window. Never late. Never forgotten.'},
-  {emoji:'🌅',title:'The Journey Continues',text:'Every morning, Bobo counts the smiles from overnight dreams. Then naps all day, recharging for the next big night shift. The dreaming never stops. ✨'},
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
+    title:'In the Beginning...',
+    text:'Before there were dreams, the universe was quiet — a little too quiet. Stars flickered but no one was sleeping underneath them. Something had to be done.'
+  },
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="15" cy="9" r="1.5" fill="currentColor"/><path d="M18.36 5.64A9 9 0 0 1 20 12"/></svg>',
+    title:'A Bubble Appears',
+    text:'One night, a tiny glowing bubble floated up from the Dream River. It wobbled, it spun, and then — POP! Out tumbled Bobo, already yawning, already curious.'
+  },
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M8 5.5a2.5 2.5 0 0 1 2.5 2.5"/><path d="M16 5.5a2.5 2.5 0 0 0-2.5 2.5"/><circle cx="9.5" cy="12.5" r="1.3" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1.3" fill="currentColor"/><path d="M10 16a2 2 0 0 0 4 0"/></svg>',
+    title:'Sky-Blue and Squishy',
+    text:'Bobo was sky-blue, perfectly round, and impossibly squishy. Two enormous eyes blinked at the stars. "Hello," said Bobo. "What do I do now?"'
+  },
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg>',
+    title:'The First Assignment',
+    text:'The Great Starkeeper handed Bobo a tiny briefcase full of dream seeds. "Plant these in sleeping minds," she said. "Make the nights warm and wonderful."'
+  },
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+    title:'The Lullaby Lab',
+    text:'Bobo built a tiny lab on a cloud. Inside: bells, chimes, and one very important music box. Every night Bobo composes new lullabies for every creature below.'
+  },
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    title:'Dream Delivery Routes',
+    text:'Bobo flies the same routes every night — House A, House B, House C — leaving a small dream at each window. Never late. Never forgotten.'
+  },
+  {
+    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>',
+    title:'The Journey Continues',
+    text:'Every morning, Bobo counts the smiles from overnight dreams. Then naps all day, recharging for the next big night shift. The dreaming never stops.'
+  },
 ];
 
 let currentPage=0;
@@ -137,7 +165,7 @@ function buildStorybook(){
       stars+='<span style="left:'+x+'%;top:'+y+'%;--dur:'+dur+'s;animation-delay:'+delay+'s">✦</span>';
     }
     stars+='</div>';
-    div.innerHTML=stars+'<span class="page-emoji">'+p.emoji+'</span><div class="page-title">'+p.title+'</div><div class="page-text">'+p.text+'</div><div class="page-num">'+(i+1)+' / '+STORY_PAGES.length+'</div>';
+    div.innerHTML=stars+'<span class="page-icon-badge">'+p.iconSvg+'</span><div class="page-title">'+p.title+'</div><div class="page-text">'+p.text+'</div><div class="page-num">'+(i+1)+' / '+STORY_PAGES.length+'</div>';
     bookContainer.appendChild(div);
   });
   dotsContainer.innerHTML='';
@@ -355,7 +383,12 @@ async function playLullaby(){
   const playBtn=document.getElementById('play-lullaby');
   if(playBtn){
     playBtn.classList.add('playing');
-    playBtn.textContent = '⏸ Pause Lullaby';
+    const playSvg = playBtn.querySelector('.icon-play');
+    const pauseSvg = playBtn.querySelector('.icon-pause');
+    const textSpan = playBtn.querySelector('.synth-btn-text');
+    if (playSvg) playSvg.style.display = 'none';
+    if (pauseSvg) pauseSvg.style.display = 'inline-block';
+    if (textSpan) textSpan.textContent = 'Pause Lullaby';
   }
 }
 
@@ -367,7 +400,12 @@ function stopLullaby(){
   const playBtn=document.getElementById('play-lullaby');
   if(playBtn){
     playBtn.classList.remove('playing');
-    playBtn.textContent = '▶ Play Melodic Lullaby';
+    const playSvg = playBtn.querySelector('.icon-play');
+    const pauseSvg = playBtn.querySelector('.icon-pause');
+    const textSpan = playBtn.querySelector('.synth-btn-text');
+    if (playSvg) playSvg.style.display = 'inline-block';
+    if (pauseSvg) pauseSvg.style.display = 'none';
+    if (textSpan) textSpan.textContent = 'Play Melodic Lullaby';
   }
 }
 
@@ -412,57 +450,6 @@ makeSlider('sl-tempo','val-tempo','tempo');
 makeSlider('sl-reverb','val-reverb','reverb');
 makeSlider('sl-vol','val-vol','volume');
 
-// ---- Nightlight Collection ----
-const LANTERNS=[
-  {emoji:'🌙',label:'Moon Glow',color:'#7c3aed',bg:'rgba(124,58,237,0.15)'},
-  {emoji:'⭐',label:'Star Lamp',color:'#f59e0b',bg:'rgba(245,158,11,0.15)'},
-  {emoji:'🌊',label:'Ocean Light',color:'#0ea5e9',bg:'rgba(14,165,233,0.15)'},
-  {emoji:'🌸',label:'Blossom',color:'#ec4899',bg:'rgba(236,72,153,0.15)'},
-  {emoji:'🔥',label:'Ember',color:'#f97316',bg:'rgba(249,115,22,0.15)'},
-  {emoji:'🌿',label:'Forest',color:'#22c55e',bg:'rgba(34,197,94,0.15)'},
-];
-const lanternGrid=document.getElementById('lantern-grid');
-if(lanternGrid){
-  LANTERNS.forEach(l=>{
-    const el=document.createElement('div');
-    el.className='lantern';el.style.background=l.bg;
-    el.innerHTML='<div class="lantern-glow" style="background:radial-gradient(circle,'+l.color+'44,transparent 70%);"></div><span style="font-size:2rem">'+l.emoji+'</span><span class="lantern-label">'+l.label+'</span>';
-    el.addEventListener('click',()=>{
-      el.classList.toggle('on');
-      if(el.classList.contains('on')){
-        el.style.boxShadow='0 0 24px '+l.color+'88,0 0 48px '+l.color+'44';
-        el.style.borderColor=l.color;
-      }else{
-        el.style.boxShadow='';el.style.borderColor='';
-      }
-      clickSFX();
-    });
-    lanternGrid.appendChild(el);
-  });
-}
-
-// ---- Dream Route Animation ----
-(function animateDreamRoute(){
-  const boboFlyer=document.getElementById('bobo-flyer');
-  if(!boboFlyer)return;
-  let t=0;
-  const ROUTE=[[40,100],[80,40],[140,80],[200,120],[260,60],[310,20],[340,80]];
-  function lerp(a,b,x){return a+(b-a)*x;}
-  function getPos(p){
-    const s=p*(ROUTE.length-1);
-    const idx=Math.min(Math.floor(s),ROUTE.length-2);
-    const f=s-idx;
-    return[lerp(ROUTE[idx][0],ROUTE[idx+1][0],f),lerp(ROUTE[idx][1],ROUTE[idx+1][1],f)];
-  }
-  function tick(){
-    t=(t+.002)%1;
-    const pos=getPos(t);
-    boboFlyer.setAttribute('transform','translate('+pos[0]+','+pos[1]+')');
-    requestAnimationFrame(tick);
-  }
-  tick();
-})();
-
 // ---- Dream Catcher Mini-Game ----
 const canvas=document.getElementById('game-canvas');
 const ctx2d=canvas?canvas.getContext('2d'):null;
@@ -504,8 +491,9 @@ function drawIdleGame(){
   ctx2d.fillText('Catch falling stars & avoid lightning!',W/2,H/2-10);
   ctx2d.fillStyle='#38bdf8';
   ctx2d.fillText('Best Score: ' + game.hi,W/2,H/2+20);
-  ctx2d.font='32px serif';
-  ctx2d.fillText('⭐ 🌙 💤',W/2,H/2+65);
+  drawCanvasGameItem(ctx2d, {x: W/2 - 36, y: H/2 + 58, type: 'star', color: '#fde047'});
+  drawCanvasGameItem(ctx2d, {x: W/2, y: H/2 + 58, type: 'moon', color: '#38bdf8'});
+  drawCanvasGameItem(ctx2d, {x: W/2 + 36, y: H/2 + 58, type: 'heart', color: '#f43f5e'});
 }
 
 if(canvas)initGameCanvas();
@@ -522,8 +510,8 @@ function startGame(){
   game.frame=0;
   game.spawnTimer=0;
   updateGameUI();
-  const startBtn=document.getElementById('game-start-btn');
-  if(startBtn)startBtn.textContent='Restart Game 🔄';
+  const btnText=document.getElementById('game-btn-text');
+  if(btnText)btnText.textContent='Restart Game';
   gameLoop();
 }
 
@@ -532,19 +520,98 @@ function updateGameUI(){
   const gl=document.getElementById('game-lives');
   const gh=document.getElementById('game-hi');
   if(gs)gs.textContent=game.score;
-  if(gl)gl.textContent='❤️'.repeat(Math.max(0,game.lives));
+  if(gl){
+    const heartSvg = '<svg class="hud-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+    const emptyHeartSvg = '<svg class="hud-heart empty" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+    gl.innerHTML = heartSvg.repeat(Math.max(0, game.lives)) + emptyHeartSvg.repeat(Math.max(0, 3 - game.lives));
+  }
   if(gh)gh.textContent=game.hi;
 }
 
 const ITEM_TYPES=[
-  {symbol:'⭐',good:true,points:10,speed:2.0},
-  {symbol:'🌙',good:true,points:20,speed:2.3},
-  {symbol:'💤',good:true,points:15,speed:1.8},
-  {symbol:'🌟',good:true,points:30,speed:2.6},
-  {symbol:'❤️',good:true,points:5,speed:2.0,isHeart:true},
-  {symbol:'⚡',good:false,points:0,speed:2.8},
-  {symbol:'☁️',good:false,points:0,speed:2.4},
+  {type:'star',good:true,points:10,speed:2.0,color:'#fde047'},
+  {type:'moon',good:true,points:20,speed:2.3,color:'#38bdf8'},
+  {type:'spark',good:true,points:15,speed:1.8,color:'#c084fc'},
+  {type:'super',good:true,points:30,speed:2.6,color:'#fbbf24'},
+  {type:'heart',good:true,points:5,speed:2.0,isHeart:true,color:'#f43f5e'},
+  {type:'lightning',good:false,points:0,speed:2.8,color:'#eab308'},
+  {type:'cloud',good:false,points:0,speed:2.4,color:'#94a3b8'},
 ];
+
+function drawCanvasGameItem(ctx, item) {
+  ctx.save();
+  ctx.translate(item.x, item.y);
+  if (item.type === 'star' || item.type === 'super') {
+    ctx.fillStyle = item.color || '#fde047';
+    ctx.shadowColor = item.color || '#fde047';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    const spikes = 5, outerR = item.type === 'super' ? 14 : 11, innerR = item.type === 'super' ? 7 : 5.5;
+    for (let i = 0; i < spikes * 2; i++) {
+      const r = i % 2 === 0 ? outerR : innerR;
+      const angle = (i * Math.PI) / spikes - Math.PI / 2;
+      const x = Math.cos(angle) * r, y = Math.sin(angle) * r;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fill();
+  } else if (item.type === 'moon') {
+    ctx.fillStyle = '#38bdf8';
+    ctx.shadowColor = '#38bdf8';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.arc(0, 0, 11, -Math.PI / 2, Math.PI / 2, false);
+    ctx.bezierCurveTo(4, 7, 4, -7, 0, -11);
+    ctx.closePath();
+    ctx.fill();
+  } else if (item.type === 'spark') {
+    ctx.fillStyle = '#c084fc';
+    ctx.shadowColor = '#c084fc';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.moveTo(0, -12);
+    ctx.quadraticCurveTo(0, 0, 12, 0);
+    ctx.quadraticCurveTo(0, 0, 0, 12);
+    ctx.quadraticCurveTo(0, 0, -12, 0);
+    ctx.quadraticCurveTo(0, 0, 0, -12);
+    ctx.closePath();
+    ctx.fill();
+  } else if (item.type === 'heart') {
+    ctx.fillStyle = '#f43f5e';
+    ctx.shadowColor = '#f43f5e';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.moveTo(0, 4);
+    ctx.bezierCurveTo(-8, -6, -12, 2, 0, 12);
+    ctx.bezierCurveTo(12, 2, 8, -6, 0, 4);
+    ctx.closePath();
+    ctx.fill();
+  } else if (item.type === 'lightning') {
+    ctx.fillStyle = '#eab308';
+    ctx.shadowColor = '#eab308';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.moveTo(2, -13);
+    ctx.lineTo(-7, 0);
+    ctx.lineTo(0, 0);
+    ctx.lineTo(-2, 13);
+    ctx.lineTo(7, -1);
+    ctx.lineTo(0, -1);
+    ctx.closePath();
+    ctx.fill();
+  } else if (item.type === 'cloud') {
+    ctx.fillStyle = '#94a3b8';
+    ctx.shadowColor = 'rgba(148, 163, 184, 0.4)';
+    ctx.shadowBlur = 6;
+    ctx.beginPath();
+    ctx.arc(-5, 2, 6, Math.PI * 0.5, Math.PI * 1.5);
+    ctx.arc(0, -3, 8, Math.PI * 1, Math.PI * 2);
+    ctx.arc(7, 2, 6, Math.PI * 1.5, Math.PI * 0.5);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
+}
 
 function spawnItem(){
   const W = canvas.width;
@@ -558,7 +625,8 @@ function spawnItem(){
     x: 24 + Math.random() * (W - 48),
     y: -24,
     vy: itemDef.speed * speedMult,
-    symbol: itemDef.symbol,
+    type: itemDef.type,
+    color: itemDef.color,
     good: itemDef.good,
     points: itemDef.points,
     isHeart: !!itemDef.isHeart,
@@ -623,13 +691,9 @@ function gameLoop(){
   const bY = H - 46;
   const bxC = game.basket.x;
 
-  ctx2d.font = '24px serif';
-  ctx2d.textAlign = 'center';
-  ctx2d.textBaseline = 'middle';
-
   game.items = game.items.filter(item => {
     item.y += item.vy;
-    ctx2d.fillText(item.symbol, item.x, item.y);
+    drawCanvasGameItem(ctx2d, item);
 
     const bL = bxC - bw/2 - 4;
     const bR = bxC + bw/2 + 4;
@@ -742,15 +806,15 @@ function endGame(){
   ctx2d.fillStyle='#fbbf24';
   ctx2d.font='bold 26px "Baloo 2", cursive';
   ctx2d.textAlign='center';
-  ctx2d.fillText('Game Over! 💤',W/2,H/2-30);
+  ctx2d.fillText('Game Over',W/2,H/2-30);
   ctx2d.fillStyle='#ffffff';
   ctx2d.font='bold 17px "Nunito", sans-serif';
   ctx2d.fillText('Score: '+game.score+'  |  Best: '+game.hi,W/2,H/2+8);
   ctx2d.fillStyle='#94a3b8';
   ctx2d.font='14px "Nunito", sans-serif';
-  ctx2d.fillText('Tap "Restart Game" to play again! ✨',W/2,H/2+38);
-  const startBtn=document.getElementById('game-start-btn');
-  if(startBtn)startBtn.textContent='Restart Game 🚀';
+  ctx2d.fillText('Tap "Restart Game" to play again!',W/2,H/2+38);
+  const btnText=document.getElementById('game-btn-text');
+  if(btnText)btnText.textContent='Restart Game';
 }
 
 const gameStartBtn=document.getElementById('game-start-btn');
@@ -817,7 +881,7 @@ export async function loadGuestbook(){
     const r=await fetch('/api/guestbook');
     const entries=await r.json();
     if(entries.length===0){
-      container.innerHTML='<div style="text-align:center;opacity:0.5;padding:24px;font-size:0.85rem;">Be the first to leave a dream! 🌙</div>';
+      container.innerHTML='<div style="text-align:center;opacity:0.5;padding:24px;font-size:0.85rem;">Be the first to leave a dream!</div>';
       return;
     }
     container.innerHTML='';
@@ -829,7 +893,7 @@ export async function loadGuestbook(){
       container.appendChild(div);
     });
   }catch(err){
-    container.innerHTML='<div style="text-align:center;opacity:0.5;padding:24px;font-size:0.85rem;">Could not load dreams 😢</div>';
+    container.innerHTML='<div style="text-align:center;opacity:0.5;padding:24px;font-size:0.85rem;">Could not load dreams.</div>';
   }
 }
 
@@ -842,6 +906,7 @@ if(submitBtn){
   submitBtn.addEventListener('click',async()=>{
     const nameEl=document.getElementById('g-name');
     const msgEl=document.getElementById('g-msg');
+    const btnText=document.getElementById('submit-guest-text')||submitBtn;
     const name=nameEl.value.trim(),message=msgEl.value.trim();
     if(!name||!message){
       if(!name)nameEl.style.borderColor='#f87171';
@@ -849,16 +914,16 @@ if(submitBtn){
       return;
     }
     nameEl.style.borderColor='';msgEl.style.borderColor='';
-    submitBtn.textContent='Sending... 💫';submitBtn.disabled=true;
+    btnText.textContent='Sending...';submitBtn.disabled=true;
     try{
       const r=await fetch('/api/guestbook',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,message,emoji:selectedEmoji})});
       if(r.ok){
         nameEl.value='';msgEl.value='';
-        submitBtn.textContent='✨ Dream Sent!';
-        setTimeout(()=>{submitBtn.textContent='✨ Sign the Guestbook';submitBtn.disabled=false;},2000);
+        btnText.textContent='Dream Sent!';
+        setTimeout(()=>{btnText.textContent='Sign the Guestbook';submitBtn.disabled=false;},2000);
         await loadGuestbook();
-      }else{submitBtn.textContent='❌ Try again';submitBtn.disabled=false;}
-    }catch(err){submitBtn.textContent='❌ Try again';submitBtn.disabled=false;}
+      }else{btnText.textContent='Try again';submitBtn.disabled=false;}
+    }catch(err){btnText.textContent='Try again';submitBtn.disabled=false;}
   });
 }
 
