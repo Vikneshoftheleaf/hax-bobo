@@ -241,7 +241,7 @@ callBtn.onclick = async () => {
   try {
     await live.connect();
     setCallState('active');
-    live.sendText('[event] user just woke you up, greet them cheekily.');
+    live.sendText('[event] user just woke you up, greet them warmly and cutely.');
   } catch (e) {
     live.stop();
     setCallState('idle');
@@ -275,22 +275,22 @@ function react({ say, text, cls, sound, ms = 1000, force = false, customMouth = 
 
 const R = {
   // Touch reactions
-  hit: () => react({ say: 'user hit you on the head', text: 'Ouch! Watch it!', cls: 'hurt', sound: sfx.ouch, ms: 700 }),
-  pet: () => react({ say: 'user is gently petting your head', text: 'Mmm, so cozy...', cls: 'happy', sound: sfx.purr, ms: 1800 }),
-  belly: () => react({ say: 'user poked your belly', text: 'Squeak!', cls: 'squish', sound: sfx.squeak, ms: 400 }),
-  tickle: () => react({ say: 'user is tickling your belly like crazy', text: 'Hahaha, stop it!', cls: 'laugh', sound: sfx.giggle, ms: 1800 }),
-  nose: () => react({ say: 'user booped your nose', text: 'Boop! Hey!', cls: 'squish', sound: sfx.boop, ms: 400 }),
-  ear: () => react({ say: 'user yanked your ear', text: 'Ouch, my ears!', cls: 'hurt', sound: sfx.ouch, ms: 600 }),
-  cheek: () => react({ say: 'user pinched your chubby cheek', text: 'My cheek!', cls: 'squish', sound: sfx.squeak, ms: 600 }),
-  foot: () => react({ say: 'user tickled your foot', text: 'Heehee, my feet!', cls: 'laugh', sound: sfx.giggle, ms: 1200 }),
-  body: () => react({ say: 'user poked your body', text: 'Hey there!', cls: 'squish', sound: sfx.squeak, ms: 400 }),
+  hit: () => react({ say: 'user gently bumped your head. React with sweet affection and ask for a warm hug in under 6 words.', text: 'Gentle please! Big hug?', cls: 'happy', sound: sfx.purr, ms: 800 }),
+  pet: () => react({ say: 'user is gently petting your head. React with cozy gratitude and love in under 6 words.', text: 'Mmm, so cozy... love you!', cls: 'happy', sound: sfx.purr, ms: 1800 }),
+  belly: () => react({ say: 'user poked your belly softly. Giggle cutely in under 5 words.', text: 'Squeak! Hehe!', cls: 'squish', sound: sfx.squeak, ms: 400 }),
+  tickle: () => react({ say: 'user is tickling your belly. Laugh with pure cute joy in under 6 words.', text: "Heehee, you're the best!", cls: 'laugh', sound: sfx.giggle, ms: 1800 }),
+  nose: () => react({ say: 'user booped your nose. Giggle sweetly in under 5 words.', text: "Boop! You're so sweet!", cls: 'squish', sound: sfx.boop, ms: 400 }),
+  ear: () => react({ say: 'user gently touched your soft ear. React softly and cutely under 5 words.', text: 'Soft ears! Gentle friend.', cls: 'squish', sound: sfx.squeak, ms: 600 }),
+  cheek: () => react({ say: 'user gently squished your chubby cheeks. Smile with sweet joy under 6 words.', text: 'Squishy cheeks! Smile with me!', cls: 'squish', sound: sfx.squeak, ms: 600 }),
+  foot: () => react({ say: 'user tickled your tiny feet. Giggle happily under 6 words.', text: 'Tee-hee, happy little feet!', cls: 'laugh', sound: sfx.giggle, ms: 1200 }),
+  body: () => react({ say: 'user gave you a soft pat. Welcome them warmly under 5 words.', text: 'Hello sweet friend!', cls: 'squish', sound: sfx.squeak, ms: 400 }),
 
   // Dock actions
   feed: () => {
     chewMouth(5, 170);
     react({
-      say: 'user fed you a delicious donut! Munch loudly and comment enthusiastically on the treat in under 6 words.',
-      text: 'Mmm, yummy donut!',
+      say: 'user fed you a delicious donut! Munch happily and thank them warmly in under 6 words.',
+      text: 'Mmm, yummy! Thank you!',
       cls: 'eating',
       sound: sfx.chomp,
       ms: 2200,
@@ -301,8 +301,8 @@ const R = {
   drink: () => {
     sipMouth(4, 230);
     react({
-      say: 'user gave you cold boba milk! Slurp it down through the straw, and react with satisfaction in under 6 words.',
-      text: 'Slurp! Brain freeze!',
+      say: 'user gave you cold boba milk! Slurp happily and express cozy delight in under 6 words.',
+      text: 'Slurp! So refreshing, thanks!',
       cls: 'drinking',
       sound: sfx.slurp,
       ms: 2200,
@@ -312,40 +312,40 @@ const R = {
   },
 
   fart: () => react({
-    say: 'you just let out a squeaky little fart! Act shocked, blush red, and cheekily blame the user in under 6 words.',
-    text: 'Oops, was that you?!',
+    say: 'you let out a tiny bashful sneeze and blushed. Be very polite and cute in under 6 words.',
+    text: 'Oopsie! Excuse me! *blushes*',
     cls: 'farting',
-    sound: sfx.fart,
+    sound: sfx.squeak,
     ms: 2000,
     force: true,
   }),
   dance: () => react({
-    say: 'funky party music started! Sing a short baby groove in under 6 words.',
-    text: "Let's party!",
+    say: 'cheerful happy music started! Sing a joyful, sweet baby melody in under 6 words.',
+    text: "Yay! Let's dance happily!",
     cls: 'dancing',
     sound: sfx.dance,
     ms: 3000,
     force: true,
   }),
   sleep: () => react({
-    say: 'user told you it is nap time. Yawn cutely in under 5 words.',
-    text: 'Zzz... goodnight...',
+    say: 'user is tucking you in for bed. Wish them sweet dreams lovingly in under 5 words.',
+    text: 'Sweet dreams, sleep tight...',
     cls: 'sleepy',
     sound: sfx.yawn,
     ms: 2800,
     force: true,
   }),
   dizzy: () => react({
-    say: 'user spun you around and your head is spinning! Speak in a dizzy wobbly baby voice under 6 words.',
-    text: 'Whoa, world is spinning!',
+    say: 'user spun you in a happy circle! React with cute starry wonder under 6 words.',
+    text: 'Wheee! So many stars!',
     cls: 'dizzy',
     sound: sfx.dizzy,
     ms: 2500,
     force: true,
   }),
   cool: () => react({
-    say: 'you put on cool rockstar sunglasses! Boast about how stylish you look in under 6 words.',
-    text: 'I look so cool!',
+    say: 'you put on cute starry sunglasses! Compliment your friend and yourself warmly under 6 words.',
+    text: "Look, we're shining bright!",
     cls: 'cool',
     sound: sfx.bling,
     ms: 2600,
@@ -405,7 +405,7 @@ svg.addEventListener('pointerup', () => {
   drag = null;
 });
 
-// ---- Idle taunts ----
+// ---- Idle check-ins ----
 function resetIdle() {
   clearTimeout(idleTimer);
   idleTimer = setTimeout(idle, 25000 + Math.random() * 20000);
@@ -413,7 +413,7 @@ function resetIdle() {
 
 function idle() {
   if (live.connected) {
-    live.sendText('[event] user has ignored you for a while. Taunt them playfully, or ask a silly question.');
+    live.sendText('[event] user has been quiet for a while. Greet them gently with a cute, loving check-in in under 6 words.');
   } else {
     fx('bored', 2500);
     sfx.squeak();

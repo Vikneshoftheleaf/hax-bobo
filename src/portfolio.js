@@ -106,42 +106,49 @@ function animateOdometer(count){
 }
 initHitCounter();
 
-// ---- Storybook Flipbook ----
+// ---- Interactive Bedtime Storybook & Dream Weaver ----
 const STORY_PAGES=[
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
     title:'In the Beginning...',
-    text:'Before there were dreams, the universe was quiet — a little too quiet. Stars flickered but no one was sleeping underneath them. Something had to be done.'
+    text:'Before there were dreams, the cosmos was quiet — a little too quiet. Stars flickered softly, waiting for someone to weave warm dreams beneath them.',
+    widgetType:'constellation'
   },
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="15" cy="9" r="1.5" fill="currentColor"/><path d="M18.36 5.64A9 9 0 0 1 20 12"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="15" cy="9" r="1.5" fill="currentColor"/><path d="M18.36 5.64A9 9 0 0 1 20 12"/></svg>',
     title:'A Bubble Appears',
-    text:'One night, a tiny glowing bubble floated up from the Dream River. It wobbled, it spun, and then — POP! Out tumbled Bobo, already yawning, already curious.'
+    text:'One gentle twilight, a luminous bubble floated up from the Dream River. It wobbled, spun with starlight, and then — POP! Out tumbled baby Bobo, already yawning.',
+    widgetType:'bubbles'
   },
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M8 5.5a2.5 2.5 0 0 1 2.5 2.5"/><path d="M16 5.5a2.5 2.5 0 0 0-2.5 2.5"/><circle cx="9.5" cy="12.5" r="1.3" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1.3" fill="currentColor"/><path d="M10 16a2 2 0 0 0 4 0"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M8 5.5a2.5 2.5 0 0 1 2.5 2.5"/><path d="M16 5.5a2.5 2.5 0 0 0-2.5 2.5"/><circle cx="9.5" cy="12.5" r="1.3" fill="currentColor"/><circle cx="14.5" cy="12.5" r="1.3" fill="currentColor"/><path d="M10 16a2 2 0 0 0 4 0"/></svg>',
     title:'Sky-Blue and Squishy',
-    text:'Bobo was sky-blue, perfectly round, and impossibly squishy. Two enormous eyes blinked at the stars. "Hello," said Bobo. "What do I do now?"'
+    text:'Bobo was sky-blue, round, and wonderfully squishy. Two giant starry eyes blinked at the moon. "Hello world," said Bobo softly. "I\'m ready to make dreams cozy."',
+    widgetType:'squishy'
   },
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg>',
     title:'The First Assignment',
-    text:'The Great Starkeeper handed Bobo a tiny briefcase full of dream seeds. "Plant these in sleeping minds," she said. "Make the nights warm and wonderful."'
+    text:'The Great Starkeeper smiled and gave Bobo a pouch of glowing dream seeds. "Plant these in peaceful minds," she whispered. "Make every night safe and kind."',
+    widgetType:'seeds'
   },
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
     title:'The Lullaby Lab',
-    text:'Bobo built a tiny lab on a cloud. Inside: bells, chimes, and one very important music box. Every night Bobo composes new lullabies for every creature below.'
+    text:'Bobo built a tiny workshop on a pastel cloud, filling it with crystal chimes and music boxes. Every night, Bobo composes gentle songs that drift down like sweet snow.',
+    widgetType:'chimes'
   },
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
     title:'Dream Delivery Routes',
-    text:'Bobo flies the same routes every night — House A, House B, House C — leaving a small dream at each window. Never late. Never forgotten.'
+    text:'Bobo takes flight across the slumbering world, tucking tiny dream packages onto every windowsill. Not a single little dreamer is ever forgotten.',
+    widgetType:'cottages'
   },
   {
-    iconSvg:'<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>',
+    iconSvg:'<svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>',
     title:'The Journey Continues',
-    text:'Every morning, Bobo counts the smiles from overnight dreams. Then naps all day, recharging for the next big night shift. The dreaming never stops.'
+    text:'At dawn, Bobo counts all the peaceful smiles of children and sleepy creatures everywhere. Then, with a happy yawn, Bobo curls up for a cozy daytime nap.',
+    widgetType:'wish'
   },
 ];
 
@@ -150,8 +157,306 @@ const bookContainer=document.getElementById('book-container');
 const prevBtn=document.getElementById('prev-page');
 const nextBtn=document.getElementById('next-page');
 const dotsContainer=document.getElementById('page-dots');
+const storyProgressBar=document.getElementById('story-progress-fill');
+const storyProgressLabel=document.getElementById('story-progress-label');
+
+// Web Audio synthesizer tone generator for storybook
+function playChimeNote(freq=440, type='triangle', dur=0.8){
+  if(sfxMuted)return;
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const t=ctx.currentTime;
+    const osc=ctx.createOscillator(), g=ctx.createGain();
+    osc.type=type;
+    osc.frequency.setValueAtTime(freq,t);
+    g.gain.setValueAtTime(0,t);
+    g.gain.linearRampToValueAtTime(0.2,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(t);
+    osc.stop(t+dur);
+    setTimeout(()=>ctx.close(),(dur*1000)+200);
+  }catch(e){}
+}
+
+// Build interactive widget HTML for each page
+function getPageWidgetHTML(type){
+  if(type==='constellation'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">✦ Touch to Awaken Constellations</span>
+        <div class="constellation-stage" id="constellation-stage">
+          <div class="star-node" data-star="peace"><span class="star-icon">⭐</span><span class="star-label">Peace</span></div>
+          <div class="star-node" data-star="wonder"><span class="star-icon">🌟</span><span class="star-label">Wonder</span></div>
+          <div class="star-node" data-star="warmth"><span class="star-icon">✨</span><span class="star-label">Warmth</span></div>
+          <div class="star-node" data-star="dreams"><span class="star-icon">🌙</span><span class="star-label">Dreams</span></div>
+        </div>
+        <div class="constellation-reward" id="constellation-reward" style="display:none;">
+          <span>✨ Constellation Awakened: The Sky is Glowingly Cozy!</span>
+        </div>
+      </div>
+    `;
+  }
+  if(type==='bubbles'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">🫧 Pop the Dream Bubbles</span>
+        <div class="bubbles-stage" id="bubbles-stage">
+          <div class="dream-bubble" data-msg="A cozy yawn~ 💤">🫧</div>
+          <div class="dream-bubble" data-msg="Warm starlight! ⭐">🫧</div>
+          <div class="dream-bubble" data-msg="Sweet dreams for all! 💖">🫧</div>
+          <div class="dream-bubble" data-msg="POP! Bobo says hi! 💙">🫧</div>
+        </div>
+        <div class="bubble-msg" id="bubble-msg">Tap any bubble to see what is inside!</div>
+      </div>
+    `;
+  }
+  if(type==='squishy'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">💙 Squish &amp; Hug Baby Bobo</span>
+        <div class="squishy-stage">
+          <svg class="squishy-mini-bobo" id="squishy-bobo-avatar" viewBox="0 0 100 100">
+            <defs>
+              <radialGradient id="miniBoboGrad" cx="35%" cy="35%" r="65%">
+                <stop offset="0%" stop-color="#9dd0ff"/>
+                <stop offset="100%" stop-color="#5fa8ee"/>
+              </radialGradient>
+            </defs>
+            <circle cx="50" cy="50" r="42" fill="url(#miniBoboGrad)" stroke="#3a82ce" stroke-width="3"/>
+            <circle cx="36" cy="46" r="6" fill="#1e293b"/>
+            <circle cx="64" cy="46" r="6" fill="#1e293b"/>
+            <circle cx="34" cy="44" r="2" fill="#ffffff"/>
+            <circle cx="62" cy="44" r="2" fill="#ffffff"/>
+            <circle cx="28" cy="56" r="5" fill="#f472b6" opacity="0.6"/>
+            <circle cx="72" cy="56" r="5" fill="#f472b6" opacity="0.6"/>
+            <path id="mini-mouth" d="M43 56 Q50 63 57 56" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="squishy-chips">
+            <button class="squish-chip" data-act="pet">Gently Pet 🐾</button>
+            <button class="squish-chip" data-act="boop">Cute Boop 🌸</button>
+            <button class="squish-chip" data-act="hug">Warm Hug 🤗</button>
+          </div>
+          <div class="squish-speech" id="squish-speech">Touch Bobo to feel how squishy he is!</div>
+        </div>
+      </div>
+    `;
+  }
+  if(type==='seeds'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">🌱 Plant a Dream Seed</span>
+        <div class="seeds-stage">
+          <button class="seed-chip" data-seed="Sweet Dreams">🌸 Sweet Dreams</button>
+          <button class="seed-chip" data-seed="Gentle Courage">⭐ Gentle Courage</button>
+          <button class="seed-chip" data-seed="Starlight Joy">✨ Starlight Joy</button>
+        </div>
+        <div class="seed-blossom" id="seed-blossom">Pick a seed to plant in tonight's clouds!</div>
+      </div>
+    `;
+  }
+  if(type==='chimes'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">🎶 Play Bobo's Crystal Chimes</span>
+        <div class="chimes-stage">
+          <div class="chime-bars-wrap">
+            <div class="chime-key" data-freq="261.63"><span class="chime-note">Do</span><span class="chime-label">C4</span></div>
+            <div class="chime-key" data-freq="293.66"><span class="chime-note">Re</span><span class="chime-label">D4</span></div>
+            <div class="chime-key" data-freq="329.63"><span class="chime-note">Mi</span><span class="chime-label">E4</span></div>
+            <div class="chime-key" data-freq="392.00"><span class="chime-note">Sol</span><span class="chime-label">G4</span></div>
+            <div class="chime-key" data-freq="440.00"><span class="chime-note">La</span><span class="chime-label">A4</span></div>
+          </div>
+          <button class="chime-sample-btn" id="play-lullaby-melody">🎵 Play Bobo's Melody</button>
+        </div>
+      </div>
+    `;
+  }
+  if(type==='cottages'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">🏠 Tap Windows to Deliver Dreams</span>
+        <div class="cottages-stage">
+          <div class="cottage-card" data-cottage="kittens">
+            <span class="cottage-icon">🐱</span>
+            <span class="cottage-name">Kitten Nook</span>
+            <span class="cottage-status">Waiting 💤</span>
+          </div>
+          <div class="cottage-card" data-cottage="puppies">
+            <span class="cottage-icon">🐶</span>
+            <span class="cottage-name">Puppy Burrow</span>
+            <span class="cottage-status">Waiting 💤</span>
+          </div>
+          <div class="cottage-card" data-cottage="bears">
+            <span class="cottage-icon">🐻</span>
+            <span class="cottage-name">Bear Cub Den</span>
+            <span class="cottage-status">Waiting 💤</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  if(type==='wish'){
+    return `
+      <div class="page-interactive-box">
+        <span class="interactive-box-tag">✨ Release a Bedtime Wish Lantern</span>
+        <div class="wish-stage">
+          <div class="wish-pills">
+            <button class="wish-pill selected" data-wish="Cozy sweet dreams">Cozy sweet dreams 🌙</button>
+            <button class="wish-pill" data-wish="A joyful tomorrow">A joyful tomorrow ☀️</button>
+            <button class="wish-pill" data-wish="Warm hugs for everyone">Warm hugs for all 💖</button>
+          </div>
+          <div class="wish-action-wrap">
+            <input type="text" id="custom-wish-input" class="wish-input" placeholder="Or write your own wish..." maxlength="45"/>
+            <button class="wish-send-btn" id="send-wish-btn">Send ✨</button>
+          </div>
+          <div class="wish-feedback" id="wish-feedback">Make a wish for someone you care about tonight.</div>
+        </div>
+      </div>
+    `;
+  }
+  return '';
+}
+
+// Bind live interactive logic to widgets on the page
+function initPageWidgetEvents(pageEl, widgetType){
+  if(widgetType==='constellation'){
+    const nodes=pageEl.querySelectorAll('.star-node');
+    const reward=pageEl.querySelector('#constellation-reward');
+    let litCount=0;
+    nodes.forEach((node,idx)=>{
+      node.addEventListener('click',()=>{
+        if(node.classList.contains('lit'))return;
+        node.classList.add('lit');
+        litCount++;
+        playChimeNote(350 + idx * 90);
+        clickSFX();
+        if(litCount===nodes.length && reward){
+          reward.style.display='flex';
+          playChimeNote(660,'triangle',1.2);
+        }
+      });
+    });
+  } else if(widgetType==='bubbles'){
+    const bubbles=pageEl.querySelectorAll('.dream-bubble');
+    const msg=pageEl.querySelector('#bubble-msg');
+    let popped=0;
+    bubbles.forEach(bubble=>{
+      bubble.addEventListener('click',()=>{
+        if(bubble.classList.contains('popped'))return;
+        bubble.classList.add('popped');
+        popped++;
+        playChimeNote(480 + popped * 80, 'sine', 0.4);
+        if(msg) msg.textContent=bubble.dataset.msg;
+        if(popped===bubbles.length && msg){
+          setTimeout(()=>{
+            msg.textContent="✨ All dreams revealed! Bobo loves you!";
+          }, 900);
+        }
+      });
+    });
+  } else if(widgetType==='squishy'){
+    const bobo=pageEl.querySelector('#squishy-bobo-avatar');
+    const speech=pageEl.querySelector('#squish-speech');
+    const chips=pageEl.querySelectorAll('.squish-chip');
+    const phrases={
+      pet: ["Purrr... so cozy!", "Warm gentle pets!", "Love you, bestie! 💖"],
+      boop: ["Boop! Hehe!", "Tickly nose!", "Aww, you're sweet! 🌸"],
+      hug: ["Big squishy hug!", "Warm and safe!", "You are wonderful! 🤗"]
+    };
+    function triggerSquish(act){
+      if(!bobo)return;
+      bobo.style.transform='scale(0.85, 1.25)';
+      setTimeout(()=>{bobo.style.transform='scale(1.15, 0.9)';},120);
+      setTimeout(()=>{bobo.style.transform='scale(1)';},260);
+      playChimeNote(act==='pet'?440:act==='boop'?660:523,'sine',0.35);
+      if(speech){
+        const list=phrases[act]||phrases.pet;
+        speech.textContent=list[Math.floor(Math.random()*list.length)];
+      }
+    }
+    if(bobo) bobo.addEventListener('click',()=>triggerSquish('pet'));
+    chips.forEach(c=>c.addEventListener('click',()=>triggerSquish(c.dataset.act)));
+  } else if(widgetType==='seeds'){
+    const chips=pageEl.querySelectorAll('.seed-chip');
+    const blossom=pageEl.querySelector('#seed-blossom');
+    chips.forEach((c,i)=>{
+      c.addEventListener('click',()=>{
+        chips.forEach(other=>other.classList.remove('planted'));
+        c.classList.add('planted');
+        playChimeNote(400 + i * 120, 'triangle', 0.9);
+        if(blossom){
+          blossom.textContent=`🌸 Beautiful! The ${c.dataset.seed} flower is glowing in the night sky!`;
+        }
+      });
+    });
+  } else if(widgetType==='chimes'){
+    const keys=pageEl.querySelectorAll('.chime-key');
+    const sampleBtn=pageEl.querySelector('#play-lullaby-melody');
+    keys.forEach(k=>{
+      k.addEventListener('click',()=>{
+        const freq=+k.dataset.freq;
+        k.classList.add('sounding');
+        setTimeout(()=>k.classList.remove('sounding'),250);
+        playChimeNote(freq,'triangle',1.1);
+      });
+    });
+    if(sampleBtn){
+      sampleBtn.addEventListener('click',()=>{
+        const notes=[261.63, 329.63, 392.00, 440.00, 392.00, 329.63, 261.63];
+        notes.forEach((freq,idx)=>{
+          setTimeout(()=>{
+            playChimeNote(freq,'triangle',0.8);
+            const matchingKey=[...keys].find(k=>Math.abs(+k.dataset.freq-freq)<2);
+            if(matchingKey){
+              matchingKey.classList.add('sounding');
+              setTimeout(()=>matchingKey.classList.remove('sounding'),220);
+            }
+          }, idx * 260);
+        });
+      });
+    }
+  } else if(widgetType==='cottages'){
+    const cottages=pageEl.querySelectorAll('.cottage-card');
+    cottages.forEach(c=>{
+      c.addEventListener('click',()=>{
+        if(c.classList.contains('delivered'))return;
+        c.classList.add('delivered');
+        const status=c.querySelector('.cottage-status');
+        if(status) status.textContent="✨ Delivered!";
+        playChimeNote(580,'sine',0.5);
+      });
+    });
+  } else if(widgetType==='wish'){
+    const pills=pageEl.querySelectorAll('.wish-pill');
+    const input=pageEl.querySelector('#custom-wish-input');
+    const sendBtn=pageEl.querySelector('#send-wish-btn');
+    const feedback=pageEl.querySelector('#wish-feedback');
+    let selectedWish="Cozy sweet dreams";
+    pills.forEach(p=>{
+      p.addEventListener('click',()=>{
+        pills.forEach(other=>other.classList.remove('selected'));
+        p.classList.add('selected');
+        selectedWish=p.dataset.wish;
+        if(input) input.value='';
+        clickSFX();
+      });
+    });
+    if(sendBtn){
+      sendBtn.addEventListener('click',()=>{
+        const wishText=(input&&input.value.trim())?input.value.trim():selectedWish;
+        playChimeNote(660,'triangle',1.2);
+        if(feedback){
+          feedback.textContent=`🌟 Lantern released for "${wishText}"! Bobo will watch over it tonight. 💤`;
+        }
+        if(input) input.value='';
+      });
+    }
+  }
+}
 
 function buildStorybook(){
+  if(!bookContainer)return;
   bookContainer.innerHTML='';
   STORY_PAGES.forEach((p,i)=>{
     const div=document.createElement('div');
@@ -165,16 +470,20 @@ function buildStorybook(){
       stars+='<span style="left:'+x+'%;top:'+y+'%;--dur:'+dur+'s;animation-delay:'+delay+'s">✦</span>';
     }
     stars+='</div>';
-    div.innerHTML=stars+'<span class="page-icon-badge">'+p.iconSvg+'</span><div class="page-title">'+p.title+'</div><div class="page-text">'+p.text+'</div><div class="page-num">'+(i+1)+' / '+STORY_PAGES.length+'</div>';
+    const widgetHTML=getPageWidgetHTML(p.widgetType);
+    div.innerHTML=stars+'<span class="page-icon-badge">'+p.iconSvg+'</span><div class="page-title">'+p.title+'</div><div class="page-text">'+p.text+'</div>'+widgetHTML+'<div class="page-num">'+(i+1)+' / '+STORY_PAGES.length+'</div>';
     bookContainer.appendChild(div);
+    initPageWidgetEvents(div, p.widgetType);
   });
-  dotsContainer.innerHTML='';
-  STORY_PAGES.forEach((_,i)=>{
-    const dot=document.createElement('div');
-    dot.className='page-dot'+(i===0?' active':'');
-    dot.addEventListener('click',()=>goToPage(i));
-    dotsContainer.appendChild(dot);
-  });
+  if(dotsContainer){
+    dotsContainer.innerHTML='';
+    STORY_PAGES.forEach((_,i)=>{
+      const dot=document.createElement('div');
+      dot.className='page-dot'+(i===0?' active':'');
+      dot.addEventListener('click',()=>goToPage(i));
+      dotsContainer.appendChild(dot);
+    });
+  }
   updateBookNav();
 }
 
@@ -182,19 +491,23 @@ let isSliding=false;
 function goToPage(newIdx){
   if(isSliding||newIdx===currentPage||newIdx<0||newIdx>=STORY_PAGES.length)return;
   isSliding=true;
-  const isNext = newIdx > currentPage;
+  if(window.speechSynthesis&&window.speechSynthesis.speaking){
+    window.speechSynthesis.cancel();
+    updateNarrateButton(false);
+  }
+  const isNext=newIdx>currentPage;
   const allPages=bookContainer.querySelectorAll('.book-page');
-  const oldP=allPages[currentPage],newP=allPages[newIdx];
+  const oldP=allPages[currentPage], newP=allPages[newIdx];
 
   newP.style.transition='none';
-  newP.style.transform=isNext ? 'translateX(100%)' : 'translateX(-100%)';
+  newP.style.transform=isNext?'translateX(100%)':'translateX(-100%)';
   newP.style.opacity='0';
-  newP.offsetHeight; // force reflow
+  newP.offsetHeight;
 
   newP.style.transition='transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease';
   oldP.style.transition='transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease';
 
-  oldP.style.transform=isNext ? 'translateX(-100%)' : 'translateX(100%)';
+  oldP.style.transform=isNext?'translateX(-100%)':'translateX(100%)';
   oldP.style.opacity='0';
   oldP.classList.remove('active');
 
@@ -207,7 +520,7 @@ function goToPage(newIdx){
   clickSFX();
 
   setTimeout(()=>{
-    allPages.forEach((p, idx)=>{
+    allPages.forEach((p,idx)=>{
       if(idx!==currentPage){
         p.style.transform='translateX(100%)';
         p.style.opacity='0';
@@ -219,13 +532,20 @@ function goToPage(newIdx){
 }
 
 function updateBookNav(){
-  prevBtn.disabled=currentPage===0;
-  nextBtn.disabled=currentPage===STORY_PAGES.length-1;
+  if(prevBtn) prevBtn.disabled=currentPage===0;
+  if(nextBtn) nextBtn.disabled=currentPage===STORY_PAGES.length-1;
   document.querySelectorAll('.page-dot').forEach((d,i)=>d.classList.toggle('active',i===currentPage));
+  if(storyProgressBar){
+    const pct=((currentPage+1)/STORY_PAGES.length)*100;
+    storyProgressBar.style.width=pct+'%';
+  }
+  if(storyProgressLabel){
+    storyProgressLabel.textContent=`Page ${currentPage+1} of ${STORY_PAGES.length}`;
+  }
 }
 
-prevBtn.addEventListener('click',()=>goToPage(currentPage-1));
-nextBtn.addEventListener('click',()=>goToPage(currentPage+1));
+if(prevBtn) prevBtn.addEventListener('click',()=>goToPage(currentPage-1));
+if(nextBtn) nextBtn.addEventListener('click',()=>goToPage(currentPage+1));
 
 document.addEventListener('keydown',e=>{
   if(currentTab!=='story')return;
@@ -235,13 +555,349 @@ document.addEventListener('keydown',e=>{
 
 let storyTouchX=null;
 const storyPageEl=document.getElementById('page-story');
-storyPageEl.addEventListener('touchstart',e=>{storyTouchX=e.touches[0].clientX;},{passive:true});
-storyPageEl.addEventListener('touchend',e=>{
-  if(storyTouchX===null)return;
-  const dx=e.changedTouches[0].clientX-storyTouchX;
-  if(Math.abs(dx)>40){if(dx<0)goToPage(currentPage+1);else goToPage(currentPage-1);}
-  storyTouchX=null;
-});
+if(storyPageEl){
+  storyPageEl.addEventListener('touchstart',e=>{storyTouchX=e.touches[0].clientX;},{passive:true});
+  storyPageEl.addEventListener('touchend',e=>{
+    if(storyTouchX===null)return;
+    const dx=e.changedTouches[0].clientX-storyTouchX;
+    if(Math.abs(dx)>40){if(dx<0)goToPage(currentPage+1);else goToPage(currentPage-1);}
+    storyTouchX=null;
+  });
+}
+
+// Narration & Story Controls
+const storyReadBtn=document.getElementById('story-read-btn');
+const readBtnText=document.getElementById('read-btn-text');
+function updateNarrateButton(isSpeaking){
+  if(storyReadBtn) storyReadBtn.classList.toggle('active', isSpeaking);
+  if(readBtnText) readBtnText.textContent=isSpeaking?'Stop':'Listen Aloud';
+}
+
+function narrateCurrentPage(){
+  if(!('speechSynthesis' in window)){
+    alert('Text-to-speech is not supported by your browser.');
+    return;
+  }
+  if(window.speechSynthesis.speaking){
+    window.speechSynthesis.cancel();
+    updateNarrateButton(false);
+    return;
+  }
+  const page=STORY_PAGES[currentPage];
+  const utter=new SpeechSynthesisUtterance(`${page.title}. ${page.text}`);
+  utter.rate=0.92;
+  utter.pitch=1.15;
+  const voices=window.speechSynthesis.getVoices();
+  const sweetVoice=voices.find(v=>v.lang.startsWith('en')&&(v.name.includes('Natural')||v.name.includes('Samantha')||v.name.includes('Google')||v.name.includes('Zira')));
+  if(sweetVoice) utter.voice=sweetVoice;
+
+  utter.onstart=()=>{
+    updateNarrateButton(true);
+    const pageText=bookContainer.querySelector('.book-page.active .page-text');
+    if(pageText) pageText.classList.add('reading-highlight');
+  };
+  utter.onend=()=>{
+    updateNarrateButton(false);
+    document.querySelectorAll('.page-text').forEach(t=>t.classList.remove('reading-highlight'));
+  };
+  utter.onerror=()=>{
+    updateNarrateButton(false);
+    document.querySelectorAll('.page-text').forEach(t=>t.classList.remove('reading-highlight'));
+  };
+  window.speechSynthesis.speak(utter);
+}
+
+if(storyReadBtn) storyReadBtn.addEventListener('click', narrateCurrentPage);
+
+// Auto-Turn Mode
+let autoTurnTimer=null;
+let isAutoTurning=false;
+const storyAutoBtn=document.getElementById('story-auto-btn');
+const autoBtnText=document.getElementById('auto-btn-text');
+if(storyAutoBtn){
+  storyAutoBtn.addEventListener('click',()=>{
+    isAutoTurning=!isAutoTurning;
+    storyAutoBtn.classList.toggle('active', isAutoTurning);
+    if(autoBtnText) autoBtnText.textContent=isAutoTurning?'Pause':'Auto-Turn';
+    if(isAutoTurning){
+      autoTurnTimer=setInterval(()=>{
+        if(!isAutoTurning)return;
+        if(currentPage>=STORY_PAGES.length-1){
+          goToPage(0);
+        } else {
+          goToPage(currentPage+1);
+        }
+      }, 5500);
+    } else {
+      if(autoTurnTimer){ clearInterval(autoTurnTimer); autoTurnTimer=null; }
+    }
+  });
+}
+
+// Background Lullaby Chimes
+let storyChimesTimer=null;
+let isStoryChimesActive=false;
+const storyMusicBtn=document.getElementById('story-music-btn');
+if(storyMusicBtn){
+  storyMusicBtn.addEventListener('click',()=>{
+    isStoryChimesActive=!isStoryChimesActive;
+    storyMusicBtn.classList.toggle('active', isStoryChimesActive);
+    if(isStoryChimesActive){
+      const chord=[523.25, 659.25, 783.99, 987.77, 783.99, 659.25];
+      let step=0;
+      storyChimesTimer=setInterval(()=>{
+        if(!isStoryChimesActive)return;
+        playChimeNote(chord[step % chord.length], 'sine', 0.9);
+        step++;
+      }, 850);
+    } else {
+      if(storyChimesTimer){ clearInterval(storyChimesTimer); storyChimesTimer=null; }
+    }
+  });
+}
+
+// Mode Switcher: Origin Flipbook vs Dream Weaver Studio
+const modeFlipbookBtn=document.getElementById('mode-flipbook');
+const modeWeaverBtn=document.getElementById('mode-weaver');
+const flipbookView=document.getElementById('story-flipbook-view');
+const weaverView=document.getElementById('story-weaver-view');
+
+if(modeFlipbookBtn&&modeWeaverBtn){
+  modeFlipbookBtn.addEventListener('click',()=>{
+    modeFlipbookBtn.classList.add('active');
+    modeFlipbookBtn.setAttribute('aria-selected','true');
+    modeWeaverBtn.classList.remove('active');
+    modeWeaverBtn.setAttribute('aria-selected','false');
+    if(flipbookView) flipbookView.style.display='flex';
+    if(weaverView) weaverView.style.display='none';
+    clickSFX();
+  });
+  modeWeaverBtn.addEventListener('click',()=>{
+    modeWeaverBtn.classList.add('active');
+    modeWeaverBtn.setAttribute('aria-selected','true');
+    modeFlipbookBtn.classList.remove('active');
+    modeFlipbookBtn.setAttribute('aria-selected','false');
+    if(flipbookView) flipbookView.style.display='none';
+    if(weaverView) weaverView.style.display='block';
+    clickSFX();
+  });
+}
+
+// =============================================
+// DREAM WEAVER STUDIO WIDGET (BEDTIME STORY CO-CREATOR)
+// =============================================
+let weaverState = {
+  realm: 'cloud',
+  companion: 'owl',
+  quest: 'stardust',
+  currentTale: null
+};
+
+// Option selectors
+function setupWeaverOptionGroup(containerId, stateKey){
+  const container=document.getElementById(containerId);
+  if(!container)return;
+  const opts=container.querySelectorAll('.weaver-opt');
+  opts.forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      opts.forEach(o=>o.classList.remove('active'));
+      opt.classList.add('active');
+      weaverState[stateKey]=opt.dataset.val;
+      clickSFX();
+    });
+  });
+}
+setupWeaverOptionGroup('weaver-realms', 'realm');
+setupWeaverOptionGroup('weaver-companions', 'companion');
+setupWeaverOptionGroup('weaver-quests', 'quest');
+
+const weaverGenerateBtn=document.getElementById('weaver-generate-btn');
+const weaverTheatre=document.getElementById('weaver-theatre');
+const theatreTitleTag=document.getElementById('theatre-title-tag');
+const theatreStoryTitle=document.getElementById('theatre-story-title');
+const theatreStoryProse=document.getElementById('theatre-story-prose');
+const theatreChoiceBox=document.getElementById('theatre-choice-box');
+const choicePrompt=document.getElementById('choice-prompt');
+const choiceButtons=document.getElementById('choice-buttons');
+const theatreEnding=document.getElementById('theatre-ending');
+const endingBlessing=document.getElementById('ending-blessing');
+const theatreNarrateBtn=document.getElementById('theatre-narrate-btn');
+const theatreCopyBtn=document.getElementById('theatre-copy-btn');
+const tuckBoboBtn=document.getElementById('tuck-bobo-btn');
+const remixStoryBtn=document.getElementById('remix-story-btn');
+
+const WEAVER_DATA = {
+  realms: {
+    cloud: { name: 'Cloud Meadow', icon: '🌌', desc: 'floating lavender clouds where starlight collects like warm morning dew' },
+    ocean: { name: 'Moonlit Bay', icon: '🌊', desc: 'gently rolling waters of crystal blue that glow softly under the full moon' },
+    castle: { name: 'Pillow Fortress', icon: '🏰', desc: 'a castle made of cozy down quilts, fairy lights, and steaming mugs of cocoa' },
+    forest: { name: 'Starlight Grove', icon: '🌸', desc: 'an enchanted forest of singing bluebells, glowing moss, and sleepy fireflies' }
+  },
+  companions: {
+    owl: { name: 'Pip the Star Owl', icon: '🦉', desc: 'who fluffs his soft feathers and knows all the universe\'s kindest lullabies' },
+    kitten: { name: 'Mochi the Cloud Kitten', icon: '🐱', desc: 'who purrs in perfect soothing harmony with the cosmic tides' },
+    fox: { name: 'Bramble the Star Fox', icon: '🦊', desc: 'with a warm bushy tail and a lantern that banishes all night worries' },
+    bunny: { name: 'Fluff the Moon Bunny', icon: '🐰', desc: 'who hops from star to star making sure every dreamer is tucked in snugly' }
+  },
+  quests: {
+    stardust: {
+      name: 'Catching Lost Stardust',
+      act1: 'Tonight, golden dust from a wandering comet drifted down across the sky. Little dreamers below needed a sprinkle of light to guide their happy dreams.',
+      act2: 'Bobo and companion set out with a silver net woven of moonbeams, catching shimmering sparks of starlight that giggled like tiny chime bells.',
+      choicePrompt: 'How should Bobo share the gathered stardust?',
+      choices: [
+        { label: '✨ Scatter stardust gently across bedroom skylights', result: 'Bobo blew a soft breath across the silver net. The stardust floated down in a glittering cascade, settling over every rooftop so children would dream of magical starry adventures.' },
+        { label: '🌟 Mold into warm personal nightlights for every bed', result: 'With a happy chirp, Bobo gently rolled the sparkles into glowing little celestial marbles, placing one at every window. Their gentle golden glow warmed the night all till morning.' }
+      ]
+    },
+    lullaby: {
+      name: 'Composing the World\'s Softest Lullaby',
+      act1: 'The evening breeze was quiet, but something was missing from tonight\'s bedtime: the world needed a brand new lullaby to soothe restless hearts.',
+      act2: 'Bobo sat atop a puffy cloud with companion, listening to the gentle pitter-patter of starlight and the warm rhythm of quiet breathing below.',
+      choicePrompt: 'Which instrument should Bobo blend into the melody?',
+      choices: [
+        { label: '🔔 Crystal music box chimes with soft raindrops', result: 'Bobo wound up the miniature celestial music box. Tinkling glass-like notes mingled with the patter of sweet night rain, coaxing even the most energetic kittens into deep, blissful slumber.' },
+        { label: '🎶 A soft hummed baby melody carried by the warm breeze', result: 'Bobo hummed a tender, loving melody in his soft baby voice. The warm breeze carried his gentle hum through every bedroom window, wrapping every sleeping heart in cozy comfort.' }
+      ]
+    },
+    tea: {
+      name: 'Brewing Sweet Chamomile Moon Tea',
+      act1: 'The nighttime chill had settled softly, and the sleepy creatures of the valley were yearning for a warm, fragrant sip before tucking into bed.',
+      act2: 'Bobo gathered fresh star-blossoms while companion carefully steeped them in sweet, warmed moon milk inside a glowing clay teapot.',
+      choicePrompt: 'What cozy secret ingredient should Bobo add?',
+      choices: [
+        { label: '🍯 A golden drizzle of honey from the Star Hive', result: 'Bobo swirled in a spoonful of glowing star-honey. The tea glowed with fragrant amber warmth, melting away all daytime worries with each sweet, comforting sip.' },
+        { label: '🌿 A pinch of crushed lavender dream leaves', result: 'A sprinkle of lilac dream leaves turned the tea into a soothing, fragrant potion of pure relaxation. Heavy eyelids fluttered closed as contented smiles spread across every little face.' }
+      ]
+    },
+    pillows: {
+      name: 'Fluffing the Great Cloud Pillows',
+      act1: 'Before the night shift could begin, the celestial dream beds needed proper fluffing. No dream could be truly sweet without the perfect cloud pillow!',
+      act2: 'Bobo bounced happily from cloud to cloud with companion, giving each puffy cumulus cushion a loving, squishy hug until it was softer than velvet.',
+      choicePrompt: 'How should Bobo give the pillows their final cozy touch?',
+      choices: [
+        { label: '🪶 Tuck in feathers of moonlight and sweet dreams', result: 'Bobo gently tucked glowing moonlight feathers into each pillow. The cushions sighed with absolute fluffiness, ready to cradle tired heads in cloud-soft embrace.' },
+        { label: '⭐ Sprinkle them with starlight perfume that smells of vanilla', result: 'A delicate spray of vanilla starlight mist settled over the pillows. The soothing aroma filled the air, ensuring everyone who rested there drifted right into peaceful dreams.' }
+      ]
+    }
+  }
+};
+
+function generateBedtimeStory(){
+  const r=WEAVER_DATA.realms[weaverState.realm];
+  const c=WEAVER_DATA.companions[weaverState.companion];
+  const q=WEAVER_DATA.quests[weaverState.quest];
+  if(!r||!c||!q)return;
+
+  weaverState.currentTale={
+    title: `Bobo and ${c.name} in the ${r.name}`,
+    tag: `${r.icon} ${r.name} · ${q.name}`,
+    prose: [
+      `High above in the <strong>${r.name}</strong>, ${r.desc}. Baby Bobo opened his round, starry eyes with a tiny squeak and stretched his sky-blue arms.`,
+      `Beside him fluttered <strong>${c.name}</strong>, ${c.desc}. Together, the two friends looked out at the peaceful world below.`,
+      `${q.act1}`,
+      `${q.act2}`
+    ],
+    choicePrompt: q.choicePrompt,
+    choices: q.choices,
+    selectedChoice: null
+  };
+
+  renderWeaverTheatre();
+}
+
+function renderWeaverTheatre(){
+  if(!weaverTheatre||!weaverState.currentTale)return;
+  const t=weaverState.currentTale;
+  weaverTheatre.style.display='block';
+  theatreTitleTag.textContent=t.tag;
+  theatreStoryTitle.textContent=t.title;
+  
+  theatreStoryProse.innerHTML=t.prose.map(p=>`<p>${p}</p>`).join('');
+  choicePrompt.textContent=t.choicePrompt;
+  choiceButtons.innerHTML='';
+  theatreEnding.style.display='none';
+
+  t.choices.forEach((ch,idx)=>{
+    const btn=document.createElement('button');
+    btn.className='choice-btn';
+    btn.innerHTML=ch.label;
+    btn.addEventListener('click',()=>{
+      t.selectedChoice=idx;
+      choiceButtons.querySelectorAll('.choice-btn').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      playChimeNote(523 + idx * 130, 'triangle', 0.9);
+      
+      // Append conclusion
+      theatreStoryProse.innerHTML=t.prose.map(p=>`<p>${p}</p>`).join('') + `<p style="color:var(--ink);font-weight:700;margin-top:10px;">${ch.result}</p>`;
+      endingBlessing.innerHTML=`💤 Bobo whispers: <em>"Rest your sleepy eyes now, sweet friend. You are safe, kind, and deeply loved tonight. Sweet dreams!"</em> ⭐`;
+      theatreEnding.style.display='flex';
+      theatreEnding.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+    choiceButtons.appendChild(btn);
+  });
+
+  weaverTheatre.scrollIntoView({behavior:'smooth',block:'nearest'});
+  playChimeNote(523.25, 'triangle', 0.8);
+}
+
+if(weaverGenerateBtn){
+  weaverGenerateBtn.addEventListener('click', generateBedtimeStory);
+}
+
+// Theatre Read Aloud
+if(theatreNarrateBtn){
+  theatreNarrateBtn.addEventListener('click',()=>{
+    if(!('speechSynthesis' in window))return;
+    if(window.speechSynthesis.speaking){
+      window.speechSynthesis.cancel();
+      theatreNarrateBtn.querySelector('span').textContent='Read Aloud';
+      return;
+    }
+    if(!weaverState.currentTale)return;
+    const text=theatreStoryTitle.textContent + '. ' + theatreStoryProse.textContent;
+    const utter=new SpeechSynthesisUtterance(text);
+    utter.rate=0.92;
+    utter.pitch=1.12;
+    utter.onstart=()=>theatreNarrateBtn.querySelector('span').textContent='Stop';
+    utter.onend=()=>theatreNarrateBtn.querySelector('span').textContent='Read Aloud';
+    utter.onerror=()=>theatreNarrateBtn.querySelector('span').textContent='Read Aloud';
+    window.speechSynthesis.speak(utter);
+  });
+}
+
+// Copy Story to Clipboard
+if(theatreCopyBtn){
+  theatreCopyBtn.addEventListener('click',()=>{
+    if(!weaverState.currentTale)return;
+    const fullText=theatreStoryTitle.textContent + '\n\n' + theatreStoryProse.textContent + '\n\n— A cozy bedtime tale co-created with Bobo ✨';
+    navigator.clipboard.writeText(fullText).then(()=>{
+      const btnSpan=theatreCopyBtn.querySelector('span');
+      if(btnSpan) btnSpan.textContent='✨ Copied!';
+      setTimeout(()=>{ if(btnSpan) btnSpan.textContent='Copy Tale'; }, 2000);
+    });
+  });
+}
+
+// Tuck Bobo in
+if(tuckBoboBtn){
+  tuckBoboBtn.addEventListener('click',()=>{
+    playChimeNote(659.25, 'sine', 1.2);
+    clickSFX();
+    tuckBoboBtn.innerHTML='<span>💖 Tucked in! Bobo is snoring happily...</span>';
+    tuckBoboBtn.disabled=true;
+    setTimeout(()=>{
+      tuckBoboBtn.innerHTML='<span>💤 Tuck Bobo in for Bed</span>';
+      tuckBoboBtn.disabled=false;
+    }, 3000);
+  });
+}
+
+if(remixStoryBtn){
+  remixStoryBtn.addEventListener('click',()=>{
+    generateBedtimeStory();
+  });
+}
 
 buildStorybook();
 

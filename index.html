@@ -1286,17 +1286,68 @@
     </section>
 
     <!-- ======================================================
-       PAGE 4: STORY (CORE QUESTION 3: BEDTIME ORIGIN FLIPBOOK)
+       PAGE 4: STORY (INTERACTIVE BEDTIME STORYBOOK & TALE WEAVER)
        ====================================================== -->
     <section class="page" id="page-story">
       <div class="section-header">
-        <span class="section-tag">Interactive Flipbook</span>
-        <h2 class="section-title">Bobo's Origin Story</h2>
-        <p class="section-sub">Flip through the pages with the buttons, arrow keys (← / →), or swipe on touch screens.
-        </p>
+        <span class="section-tag">Bedtime Story World</span>
+        <h2 class="section-title">Bobo's Storybook &amp; Dream Weaver</h2>
+        <p class="section-sub">Experience interactive bedtime tales with live touch widgets, soothing narration, and your own co-created dream adventures.</p>
       </div>
 
-      <div class="story-wrapper">
+      <!-- Mode Switcher -->
+      <div class="story-mode-switch" role="tablist" aria-label="Story View Mode">
+        <button class="story-mode-btn active" id="mode-flipbook" role="tab" aria-selected="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10M6 10h10M6 14h6"/>
+          </svg>
+          <span>Origin Flipbook</span>
+        </button>
+        <button class="story-mode-btn" id="mode-weaver" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
+          </svg>
+          <span>Dream Tale Weaver</span>
+        </button>
+      </div>
+
+      <!-- VIEW 1: INTERACTIVE ORIGIN FLIPBOOK -->
+      <div class="story-wrapper" id="story-flipbook-view">
+        <!-- Interactive Story Header Bar: Narration, Ambient Sound, Auto-Play & Progress -->
+        <div class="story-control-bar">
+          <div class="story-ctrl-group">
+            <button class="story-ctrl-btn" id="story-read-btn" title="Read page aloud with sweet narration">
+              <svg class="icon-narrate" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              </svg>
+              <span id="read-btn-text">Listen Aloud</span>
+            </button>
+            <button class="story-ctrl-btn" id="story-auto-btn" title="Automatically advance pages gently">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span id="auto-btn-text">Auto-Turn</span>
+            </button>
+            <button class="story-ctrl-btn" id="story-music-btn" title="Toggle cozy lullaby music box">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="18" cy="16" r="3"/>
+              </svg>
+              <span id="music-btn-text">Lullaby Chimes</span>
+            </button>
+          </div>
+          <div class="story-progress-wrap">
+            <span class="story-progress-label" id="story-progress-label">Page 1 of 7</span>
+            <div class="story-progress-track">
+              <div class="story-progress-fill" id="story-progress-fill" style="width: 14.28%;"></div>
+            </div>
+          </div>
+        </div>
+
         <!-- 3D Flipping Storybook Container -->
         <div id="book-container"></div>
 
@@ -1305,6 +1356,160 @@
           <button class="book-nav-btn" id="prev-page" aria-label="Previous Page">←</button>
           <div id="page-dots"></div>
           <button class="book-nav-btn" id="next-page" aria-label="Next Page">→</button>
+        </div>
+      </div>
+
+      <!-- VIEW 2: INTERACTIVE DREAM WEAVER STUDIO -->
+      <div class="story-weaver-view" id="story-weaver-view" style="display: none;">
+        <div class="weaver-card">
+          <div class="weaver-header">
+            <div class="weaver-badge">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
+              </svg>
+              <span>Dream Weaver Studio</span>
+            </div>
+            <h3 class="weaver-title">Co-Create a Bedtime Tale With Bobo</h3>
+            <p class="weaver-subtitle">Pick the ingredients for tonight's dream adventure. Bobo will weave a cozy, interactive tale with live choices!</p>
+          </div>
+
+          <!-- Step 1: Realm -->
+          <div class="weaver-step">
+            <label class="weaver-step-label">1. Choose the Dream Realm</label>
+            <div class="weaver-options" id="weaver-realms">
+              <button class="weaver-opt active" data-val="cloud">
+                <span class="weaver-opt-icon">🌌</span>
+                <span class="weaver-opt-title">Cloud Meadow</span>
+                <span class="weaver-opt-sub">Floating lavender clouds &amp; warm stars</span>
+              </button>
+              <button class="weaver-opt" data-val="ocean">
+                <span class="weaver-opt-icon">🌊</span>
+                <span class="weaver-opt-title">Moonlit Bay</span>
+                <span class="weaver-opt-sub">Gentle bioluminescent waves &amp; glowing shells</span>
+              </button>
+              <button class="weaver-opt" data-val="castle">
+                <span class="weaver-opt-icon">🏰</span>
+                <span class="weaver-opt-title">Pillow Fortress</span>
+                <span class="weaver-opt-sub">Cozy quilts, golden fairy lights &amp; warm mugs</span>
+              </button>
+              <button class="weaver-opt" data-val="forest">
+                <span class="weaver-opt-icon">🌸</span>
+                <span class="weaver-opt-title">Starlight Grove</span>
+                <span class="weaver-opt-sub">Glowing moss, sleepy dew drops &amp; gentle fireflies</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Companion -->
+          <div class="weaver-step">
+            <label class="weaver-step-label">2. Choose Bobo's Sleepy Companion</label>
+            <div class="weaver-options" id="weaver-companions">
+              <button class="weaver-opt active" data-val="owl">
+                <span class="weaver-opt-icon">🦉</span>
+                <span class="weaver-opt-title">Pip the Star Owl</span>
+                <span class="weaver-opt-sub">Wise, gentle &amp; constantly yawning</span>
+              </button>
+              <button class="weaver-opt" data-val="kitten">
+                <span class="weaver-opt-icon">🐱</span>
+                <span class="weaver-opt-title">Mochi the Cloud Kitten</span>
+                <span class="weaver-opt-sub">Purrs in time with cosmic lullabies</span>
+              </button>
+              <button class="weaver-opt" data-val="fox">
+                <span class="weaver-opt-icon">🦊</span>
+                <span class="weaver-opt-title">Bramble the Star Fox</span>
+                <span class="weaver-opt-sub">Carries a warm lantern with firefly glow</span>
+              </button>
+              <button class="weaver-opt" data-val="bunny">
+                <span class="weaver-opt-icon">🐰</span>
+                <span class="weaver-opt-title">Fluff the Moon Bunny</span>
+                <span class="weaver-opt-sub">Tucks sleepy creatures under soft starlight</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Bedtime Quest -->
+          <div class="weaver-step">
+            <label class="weaver-step-label">3. Choose the Cozy Mission</label>
+            <div class="weaver-options" id="weaver-quests">
+              <button class="weaver-opt active" data-val="stardust">
+                <span class="weaver-opt-icon">⭐</span>
+                <span class="weaver-opt-title">Catching Lost Stardust</span>
+                <span class="weaver-opt-sub">Gathering sparkles to light bedroom nightlights</span>
+              </button>
+              <button class="weaver-opt" data-val="lullaby">
+                <span class="weaver-opt-icon">🎶</span>
+                <span class="weaver-opt-title">Composing the Softest Lullaby</span>
+                <span class="weaver-opt-sub">Blending night breezes and raindrop chimes</span>
+              </button>
+              <button class="weaver-opt" data-val="tea">
+                <span class="weaver-opt-icon">☕</span>
+                <span class="weaver-opt-title">Brewing Sweet Chamomile Tea</span>
+                <span class="weaver-opt-sub">Steeping star blossoms in sweet moon milk</span>
+              </button>
+              <button class="weaver-opt" data-val="pillows">
+                <span class="weaver-opt-icon">🪶</span>
+                <span class="weaver-opt-title">Fluffing the Great Cloud Pillows</span>
+                <span class="weaver-opt-sub">Making sure every dreamer sleeps extra cozy</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="weaver-actions">
+            <button class="weaver-generate-btn" id="weaver-generate-btn">
+              <span class="sparkle-icon">✨</span>
+              <span>Weave Bedtime Tale</span>
+              <span class="sparkle-icon">✨</span>
+            </button>
+          </div>
+
+          <!-- Generated Story Theatre Container -->
+          <div class="weaver-theatre" id="weaver-theatre" style="display: none;">
+            <div class="theatre-card">
+              <div class="theatre-header">
+                <div class="theatre-badge" id="theatre-title-tag">🌌 Cloud Meadow Adventure</div>
+                <div class="theatre-actions">
+                  <button class="theatre-btn" id="theatre-narrate-btn" title="Narrate story aloud">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                    </svg>
+                    <span>Read Aloud</span>
+                  </button>
+                  <button class="theatre-btn" id="theatre-copy-btn" title="Copy bedtime story">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                    </svg>
+                    <span>Copy Tale</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="theatre-body">
+                <h4 class="theatre-story-title" id="theatre-story-title">Bobo and Pip in the Cloud Meadow</h4>
+                <div class="theatre-story-prose" id="theatre-story-prose"></div>
+
+                <!-- Interactive Story Branch Choice Widget -->
+                <div class="theatre-choice-box" id="theatre-choice-box">
+                  <div class="choice-prompt" id="choice-prompt">What should Bobo do next?</div>
+                  <div class="choice-buttons" id="choice-buttons"></div>
+                </div>
+
+                <!-- Story Ending & Blessing -->
+                <div class="theatre-ending" id="theatre-ending" style="display: none;">
+                  <div class="ending-blessing" id="ending-blessing"></div>
+                  <div class="ending-actions">
+                    <button class="ending-btn" id="tuck-bobo-btn">
+                      <span>💤 Tuck Bobo in for Bed</span>
+                    </button>
+                    <button class="ending-btn secondary" id="remix-story-btn">
+                      <span>🔄 Weave Another Dream</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
